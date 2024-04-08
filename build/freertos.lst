@@ -1,0 +1,168 @@
+ARM GAS  C:\Users\82057\AppData\Local\Temp\ccs16PQa.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"freertos.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+  18              		.align	1
+  19              		.global	vApplicationGetIdleTaskMemory
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	vApplicationGetIdleTaskMemory:
+  26              	.LFB139:
+  27              		.file 1 "Src/freertos.c"
+   1:Src/freertos.c **** /* USER CODE BEGIN Header */
+   2:Src/freertos.c **** /**
+   3:Src/freertos.c ****   ******************************************************************************
+   4:Src/freertos.c ****   * File Name          : freertos.c
+   5:Src/freertos.c ****   * Description        : Code for freertos applications
+   6:Src/freertos.c ****   ******************************************************************************
+   7:Src/freertos.c ****   * @attention
+   8:Src/freertos.c ****   *
+   9:Src/freertos.c ****   * Copyright (c) 2024 STMicroelectronics.
+  10:Src/freertos.c ****   * All rights reserved.
+  11:Src/freertos.c ****   *
+  12:Src/freertos.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  13:Src/freertos.c ****   * in the root directory of this software component.
+  14:Src/freertos.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  15:Src/freertos.c ****   *
+  16:Src/freertos.c ****   ******************************************************************************
+  17:Src/freertos.c ****   */
+  18:Src/freertos.c **** /* USER CODE END Header */
+  19:Src/freertos.c **** 
+  20:Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  21:Src/freertos.c **** #include "FreeRTOS.h"
+  22:Src/freertos.c **** #include "task.h"
+  23:Src/freertos.c **** #include "main.h"
+  24:Src/freertos.c **** 
+  25:Src/freertos.c **** /* Private includes ----------------------------------------------------------*/
+  26:Src/freertos.c **** /* USER CODE BEGIN Includes */
+  27:Src/freertos.c **** 
+  28:Src/freertos.c **** /* USER CODE END Includes */
+  29:Src/freertos.c **** 
+  30:Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
+  31:Src/freertos.c **** /* USER CODE BEGIN PTD */
+ARM GAS  C:\Users\82057\AppData\Local\Temp\ccs16PQa.s 			page 2
+
+
+  32:Src/freertos.c **** 
+  33:Src/freertos.c **** /* USER CODE END PTD */
+  34:Src/freertos.c **** 
+  35:Src/freertos.c **** /* Private define ------------------------------------------------------------*/
+  36:Src/freertos.c **** /* USER CODE BEGIN PD */
+  37:Src/freertos.c **** 
+  38:Src/freertos.c **** /* USER CODE END PD */
+  39:Src/freertos.c **** 
+  40:Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
+  41:Src/freertos.c **** /* USER CODE BEGIN PM */
+  42:Src/freertos.c **** 
+  43:Src/freertos.c **** /* USER CODE END PM */
+  44:Src/freertos.c **** 
+  45:Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
+  46:Src/freertos.c **** /* USER CODE BEGIN Variables */
+  47:Src/freertos.c **** 
+  48:Src/freertos.c **** /* USER CODE END Variables */
+  49:Src/freertos.c **** 
+  50:Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+  51:Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  52:Src/freertos.c **** 
+  53:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  54:Src/freertos.c **** 
+  55:Src/freertos.c **** /* GetIdleTaskMemory prototype (linked to static allocation support) */
+  56:Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  57:Src/freertos.c **** 
+  58:Src/freertos.c **** /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+  59:Src/freertos.c **** static StaticTask_t xIdleTaskTCBBuffer;
+  60:Src/freertos.c **** static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+  61:Src/freertos.c **** 
+  62:Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  63:Src/freertos.c **** {
+  28              		.loc 1 63 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  64:Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  34              		.loc 1 64 0
+  35 0000 034B     		ldr	r3, .L2
+  36 0002 0360     		str	r3, [r0]
+  65:Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  37              		.loc 1 65 0
+  38 0004 034B     		ldr	r3, .L2+4
+  39 0006 0B60     		str	r3, [r1]
+  66:Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  40              		.loc 1 66 0
+  41 0008 4FF40063 		mov	r3, #2048
+  42 000c 1360     		str	r3, [r2]
+  67:Src/freertos.c ****   /* place for user code */
+  68:Src/freertos.c **** }
+  43              		.loc 1 68 0
+  44 000e 7047     		bx	lr
+  45              	.L3:
+  46              		.align	2
+  47              	.L2:
+ARM GAS  C:\Users\82057\AppData\Local\Temp\ccs16PQa.s 			page 3
+
+
+  48 0010 00000000 		.word	.LANCHOR0
+  49 0014 00000000 		.word	xIdleStack
+  50              		.cfi_endproc
+  51              	.LFE139:
+  53              		.section	.bss.xIdleStack,"aw",%nobits
+  54              		.align	2
+  57              	xIdleStack:
+  58 0000 00000000 		.space	8192
+  58      00000000 
+  58      00000000 
+  58      00000000 
+  58      00000000 
+  59              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+  60              		.align	2
+  61              		.set	.LANCHOR0,. + 0
+  64              	xIdleTaskTCBBuffer:
+  65 0000 00000000 		.space	96
+  65      00000000 
+  65      00000000 
+  65      00000000 
+  65      00000000 
+  66              		.text
+  67              	.Letext0:
+  68              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+  69              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+  70              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h"
+  71              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+  72              		.file 6 "Inc/FreeRTOSConfig.h"
+  73              		.file 7 "Drivers/CMSIS/Include/core_cm4.h"
+  74              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+  75              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\82057\AppData\Local\Temp\ccs16PQa.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 freertos.c
+C:\Users\82057\AppData\Local\Temp\ccs16PQa.s:18     .text.vApplicationGetIdleTaskMemory:00000000 $t
+C:\Users\82057\AppData\Local\Temp\ccs16PQa.s:25     .text.vApplicationGetIdleTaskMemory:00000000 vApplicationGetIdleTaskMemory
+C:\Users\82057\AppData\Local\Temp\ccs16PQa.s:48     .text.vApplicationGetIdleTaskMemory:00000010 $d
+C:\Users\82057\AppData\Local\Temp\ccs16PQa.s:57     .bss.xIdleStack:00000000 xIdleStack
+C:\Users\82057\AppData\Local\Temp\ccs16PQa.s:54     .bss.xIdleStack:00000000 $d
+C:\Users\82057\AppData\Local\Temp\ccs16PQa.s:60     .bss.xIdleTaskTCBBuffer:00000000 $d
+C:\Users\82057\AppData\Local\Temp\ccs16PQa.s:64     .bss.xIdleTaskTCBBuffer:00000000 xIdleTaskTCBBuffer
+
+NO UNDEFINED SYMBOLS
